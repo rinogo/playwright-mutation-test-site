@@ -1,0 +1,31 @@
+<html>
+  <body>
+    <style>
+      #container {
+        display: inline-block;
+        background-color: #eee;
+        padding: 20px;
+      }
+    </style>
+    <div id="container">
+      <p>Initial state</p>
+    </div>
+    <script>
+      let delays = [5, 1, 2, 3, 4, 5, 6];
+
+      for(let delay of delays) {
+        setTimeout(() => {
+          addLine(`Mutation after ${delay} seconds`);
+          updateAfterRandomTimeout();
+        }, delay * 1000);
+      }
+
+      function addLine(text) {
+        let e = document.getElementById("container");
+        let child = document.createElement("p")
+        child.innerText = text;
+        e.appendChild(child);
+      }
+    </script>
+  </body>
+</html>
