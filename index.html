@@ -11,6 +11,34 @@
       <p>Initial state</p>
     </div>
     <script>
+      let initialDelay = 5;
+
+      setTimeout(() => {
+        addLine(`First mutation after ${initialDelay} seconds`);
+        updateAfterRandomTimeout();
+      }, initialDelay * 1000);
+
+      function addLine(text) {
+        let e = document.getElementById("container");
+        let child = document.createElement("p")
+        child.innerText = text;
+        e.appendChild(child);
+      }
+
+      function updateAfterRandomTimeout() {
+        let delay = getRandomInt(1, 4);
+        setTimeout(() => {
+          addLine(`Child added after a ${delay} second delay`);
+          updateAfterRandomTimeout();
+        }, delay * 1000)
+      }
+
+      //From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+      }
     </script>
   </body>
 </html>
