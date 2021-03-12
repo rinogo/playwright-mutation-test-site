@@ -26,7 +26,7 @@
       }
 
       function updateAfterRandomTimeout() {
-        let delay = getRandomInt(1, 4);
+        let delay = getRandomInt(1, 5);
         setTimeout(() => {
           addLine(`Child added after a ${delay} second delay`);
           updateAfterRandomTimeout();
