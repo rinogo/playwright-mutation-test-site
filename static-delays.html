@@ -7,6 +7,10 @@
         padding: 20px;
       }
     </style>
+    <p>This page will:
+      <ol id="list">
+      </ol>
+    </p>
     <div id="container">
       <p>Initial state</p>
     </div>
@@ -16,14 +20,15 @@
 
       for(let delay of delays) {
         cumulativeDelay += delay;
+        addLine("list", "p", `Wait ${delay} seconds and update #container...`);
         setTimeout(() => {
-          addLine(`Mutation after ${delay} seconds`);
+          addLine("container", "p", `Mutation after ${delay} seconds`);
         }, cumulativeDelay * 1000);
       }
 
-      function addLine(text) {
-        let e = document.getElementById("container");
-        let child = document.createElement("p")
+      function addLine(id, type, text) {
+        let e = document.getElementById(id);
+        let child = document.createElement(type)
         child.innerText = text;
         e.appendChild(child);
       }
