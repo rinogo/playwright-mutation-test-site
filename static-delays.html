@@ -12,12 +12,13 @@
     </div>
     <script>
       let delays = [5, 1, 2, 3, 4, 5, 6];
+      let cumulativeDelay = 0;
 
       for(let delay of delays) {
+        cumulativeDelay += delay;
         setTimeout(() => {
           addLine(`Mutation after ${delay} seconds`);
-          updateAfterRandomTimeout();
-        }, delay * 1000);
+        }, cumulativeDelay * 1000);
       }
 
       function addLine(text) {
